@@ -1,0 +1,2123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     85364,       2115]
+NotebookOptionsPosition[     79266,       2005]
+NotebookOutlinePosition[     79665,       2021]
+CellTagsIndexPosition[     79622,       2018]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Transfer function \[LineSeparator]for simple LME", "Title",
+ CellChangeTimes->{{3.909464565598959*^9, 
+  3.909464602016203*^9}},ExpressionUUID->"49e6daef-0f6b-432f-aa4e-\
+baf953481fd0"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{" ", 
+   RowBox[{
+    TemplateBox[<|"boxes" -> FormBox[
+        RowBox[{
+          FractionBox[
+           RowBox[{
+             StyleBox["d", "TI"], "\[Rho]"}], 
+           RowBox[{
+             StyleBox["d", "TI"], 
+             StyleBox["t", "TI"]}]], "\[LongEqual]", "-", 
+          StyleBox["i", "TI"], 
+          RowBox[{"[", 
+            RowBox[{
+              StyleBox["H", "TI"], ",", "\[Rho]"}], "]"}], "+", 
+          RowBox[{"[", 
+            RowBox[{
+              StyleBox["J", "TI"], "\[Rho]", 
+              SuperscriptBox[
+               StyleBox["J", "TI"], "\[Dagger]"], "-", 
+              FractionBox["1", "2"], 
+              RowBox[{"{", 
+                RowBox[{
+                  SuperscriptBox[
+                   StyleBox["J", "TI"], "\[Dagger]"], 
+                  StyleBox["J", "TI"], ",", "\[Rho]"}], "}"}]}], "]"}]}], 
+        TraditionalForm], "errors" -> {}, "input" -> 
+      "\\frac {d \\rho} {dt} = - \n   i[H, \\rho] + \\left[\n    J \\rho \
+J^\\dagger - \\frac {1} {2}\\left\\{ \n        J^\\dagger J, \\rho \\right\\} \
+\\right]", "state" -> "Boxes"|>,
+     "TeXAssistantTemplate"], "\[LineSeparator]"}]}], 
+  "DisplayFormula"]], "DisplayFormula",
+ CellChangeTimes->{{3.909466206795479*^9, 
+  3.90946622456504*^9}},ExpressionUUID->"7badde83-0eb4-4e0f-ae22-\
+aa86d8b71650"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "0"], " ", ":=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "   ", 
+      RowBox[{"\[Omega]", ",", "     ", "0"}], "}"}], ",", 
+     "\[IndentingNewLine]", "        ", 
+     RowBox[{"{", "   ", 
+      RowBox[{"0", ",", "      ", "0"}], "}"}]}], "}"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["J", "0"], " ", ":=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "   ", 
+      RowBox[{"0", ",", "   ", 
+       RowBox[{"\[Sqrt]", "\[Gamma]"}]}], "  ", "}"}], ",", 
+     "\[IndentingNewLine]", "        ", 
+     RowBox[{"{", "  ", 
+      RowBox[{"0", ",", "    ", "0"}], " ", "}"}]}], "}"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[ScriptCapitalI]", "[", "n_", "]"}], ":=", 
+   RowBox[{"IdentityMatrix", "[", "n", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.909124528027487*^9, 3.9091246330912447`*^9}, {
+   3.909126634082469*^9, 3.9091266442663307`*^9}, {3.9093890821579657`*^9, 
+   3.909389106671207*^9}, {3.90946526100485*^9, 3.909465263178288*^9}, 
+   3.909466507751136*^9, {3.9094665514391947`*^9, 3.909466573159484*^9}, {
+   3.9094774564829187`*^9, 3.909477506929669*^9}, {3.909482946433682*^9, 
+   3.909482946890565*^9}, {3.909483041847476*^9, 3.909483064771093*^9}, {
+   3.9094835079363413`*^9, 3.909483572181308*^9}, {3.909492006412735*^9, 
+   3.909492055707301*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"ed6425a0-4863-4b94-b9dc-aa3b948912dc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"L1", " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{
+      RowBox[{"\[ScriptCapitalI]", "[", "2", "]"}], ",", " ", 
+      SubscriptBox["H", "0"]}], "]"}], "-", " ", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["H", "0"], "\[Transpose]"}], ",", 
+      RowBox[{"\[ScriptCapitalI]", "[", "2", "]"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L2", " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"KroneckerProduct", "[", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{
+          SubscriptBox["J", "0"], "\[Conjugate]"}]}], ",", " ", 
+        SubscriptBox["J", "0"]}], "]"}], " ", "-", " ", 
+      RowBox[{"KroneckerProduct", "[", 
+       RowBox[{
+        RowBox[{"\[ScriptCapitalI]", "[", "2", "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["J", "0"], "\[ConjugateTranspose]"}], ".", 
+         SubscriptBox["J", "0"]}]}], "]"}], "-", " ", 
+      RowBox[{"KroneckerProduct", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SubscriptBox["J", "0"], "\[Transpose]"}], ".", 
+         RowBox[{
+          SubscriptBox["J", "0"], "\[Conjugate]"}]}], ",", " ", 
+        RowBox[{"\[ScriptCapitalI]", "[", "2", "]"}]}], "]"}]}], ")"}], "/", 
+    "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L", " ", ":=", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{
+     RowBox[{"_", "\[Element]", "Reals"}], ",", " ", 
+     RowBox[{"Simplify", "[", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", " ", "\[ImaginaryI]"}], "*", "L1"}], "+", "L2"}], " ", 
+      "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"Expand", "[", "L", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.909492032365443*^9, 3.9094921331969833`*^9}, {
+  3.909492485977869*^9, 3.9094924949280567`*^9}, {3.909492914732369*^9, 
+  3.9094930321483593`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"da7c5deb-d69d-4234-9474-03c3aed3e70c"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "0", "0", "\[Gamma]"},
+     {"0", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Gamma]", "2"]}], "+", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Omega]"}]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Gamma]", "2"]}], "-", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Omega]"}]}], "0"},
+     {"0", "0", "0", 
+      RowBox[{"-", "\[Gamma]"}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.909483573682598*^9, {3.909483705036076*^9, 3.909483715526895*^9}, 
+   3.909492173249915*^9, {3.909492461396525*^9, 3.909492495874961*^9}, 
+   3.9094926997990427`*^9, 3.909492956425704*^9, 3.90949303324174*^9, 
+   3.9095458649981117`*^9, 3.909723833811595*^9, 3.910063466602433*^9, 
+   3.910095543047079*^9},
+ CellLabel->
+  "Out[29]//MatrixForm=",ExpressionUUID->"f0358e28-4fb8-41bb-ba1e-\
+00a8816efaf1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["M", "b\[Rho]"], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", " ", "0", ",", " ", "1", ",", " ", "1"}], "}"}], ",",
+       "\[IndentingNewLine]", "          ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", "\[ImaginaryI]"}], ",", "0", ",", "0"}], "}"}], ",", 
+      "\[IndentingNewLine]", "          ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "  ", "\[ImaginaryI]", ",", "0", ",", "0"}], "}"}], 
+      ",", "\[IndentingNewLine]", "          ", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], " ", "}"}], "/", "2"}]}], 
+  " ", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Rho]", "0"], " ", ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "0"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Rho]", "1"], " ", ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0"}], "}"}], ",", " ", 
+     RowBox[{"{", " ", 
+      RowBox[{"0", ",", " ", "1"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Rho]", "x"], " ", ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", "1"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", "1"}], "}"}]}], "}"}], "/", "2"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Rho]", "y"], ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", 
+        RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\[ImaginaryI]", ",", " ", "1"}], "}"}]}], "}"}], "/", "2"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["M", "\[Rho]b"], " ", ":=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "1", ",", " ", "1", ",", " ", "0"}], "}"}], ",", 
+     "\[IndentingNewLine]", "      ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "\[ImaginaryI]", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}], ",", 
+     "\[IndentingNewLine]", "      ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "  ", "0", ",", "0", ",", 
+       RowBox[{"-", "1"}]}], "}"}], ",", "\[IndentingNewLine]", "      ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "1"}], "}"}]}], " ", "}"}]}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["b", "0"], " ", ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "0", ",", " ", "1", ",", " ", "1"}], "}"}], 
+    "\[Transpose]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["b", "1"], " ", ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "0", ",", " ", 
+      RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], "\[Transpose]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["b", "x"], " ", ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", " ", "0", ",", " ", "0", ",", " ", "1"}], "}"}], 
+    "\[Transpose]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["b", "y"], ":=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "1", ",", " ", "0", ",", " ", "1"}], "}"}], 
+    "\[Transpose]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Equal", "[", 
+  RowBox[{
+   RowBox[{
+    SubscriptBox["M", "b\[Rho]"], ".", 
+    SubscriptBox["M", "\[Rho]b"]}], " ", ",", 
+   RowBox[{"\[ScriptCapitalI]", "[", "4", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"A", " ", ":=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    SubscriptBox["M", "\[Rho]b"], ".", "L", ".", 
+    SubscriptBox["M", "b\[Rho]"]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "A", "]"}]}], "Input",
+ CellChangeTimes->{{3.909207262552394*^9, 3.909207272394372*^9}, {
+   3.9092073923539333`*^9, 3.909207420337932*^9}, {3.909207453347337*^9, 
+   3.9092075303304443`*^9}, {3.909207570964553*^9, 3.9092076131319237`*^9}, {
+   3.909207779765387*^9, 3.9092078039899063`*^9}, {3.9092225961148567`*^9, 
+   3.90922268022784*^9}, {3.9092228381743393`*^9, 3.909222861013941*^9}, 
+   3.9092231384443283`*^9, {3.909225678146459*^9, 3.909225699015678*^9}, {
+   3.9092257345443487`*^9, 3.909225773815653*^9}, {3.909225862537211*^9, 
+   3.909225884688995*^9}, {3.909225919776408*^9, 3.9092261042029552`*^9}, 
+   3.909226237075663*^9, {3.9092266866479273`*^9, 3.9092266884932747`*^9}, 
+   3.90946359954141*^9, {3.909464170101823*^9, 3.909464171192547*^9}, {
+   3.9094642026246433`*^9, 3.909464227927495*^9}, 3.909464446156386*^9, {
+   3.909465289925048*^9, 3.909465291890568*^9}, {3.909466370256983*^9, 
+   3.909466396036613*^9}, {3.909466471448448*^9, 3.909466488918324*^9}, 
+   3.9094734520921097`*^9, {3.909481948076562*^9, 3.9094819817895308`*^9}, {
+   3.909482352147263*^9, 3.9094823709429617`*^9}, {3.909482421115946*^9, 
+   3.909482428318935*^9}, {3.9094824813601627`*^9, 3.909482563072871*^9}, {
+   3.909483106172865*^9, 3.9094831107242403`*^9}, {3.909483166869136*^9, 
+   3.909483175524232*^9}, {3.909492324625886*^9, 3.909492327493537*^9}, {
+   3.909492452399934*^9, 3.90949245551182*^9}, {3.909492670834115*^9, 
+   3.909492674296571*^9}, 3.9094927404045362`*^9},
+ CellLabel->"In[30]:=",ExpressionUUID->"a447a734-9306-4d90-aba7-9e1af74ddb45"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.909482563755211*^9, 3.909482971784801*^9, 3.9094830051693077`*^9, {
+   3.9094830844801493`*^9, 3.909483111485298*^9}, {3.909483154338769*^9, 
+   3.909483176486805*^9}, 3.909483715580662*^9, 3.909492173263488*^9, {
+   3.9094925756700583`*^9, 3.909492588187294*^9}, {3.9094927217040367`*^9, 
+   3.909492741253333*^9}, 3.9094930483647013`*^9, 3.9095458650144787`*^9, 
+   3.909723833837728*^9, 3.910063466625875*^9, 3.910095543070648*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"bb3a840f-e189-4d2a-80c6-1007fc228849"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", 
+       FractionBox["\[Gamma]", "2"]}], "\[Omega]", "0", "0"},
+     {
+      RowBox[{"-", "\[Omega]"}], 
+      RowBox[{"-", 
+       FractionBox["\[Gamma]", "2"]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "\[Gamma]"}], "\[Gamma]"},
+     {"0", "0", "0", "0"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.909482563755211*^9, 3.909482971784801*^9, 3.9094830051693077`*^9, {
+   3.9094830844801493`*^9, 3.909483111485298*^9}, {3.909483154338769*^9, 
+   3.909483176486805*^9}, 3.909483715580662*^9, 3.909492173263488*^9, {
+   3.9094925756700583`*^9, 3.909492588187294*^9}, {3.9094927217040367`*^9, 
+   3.909492741253333*^9}, 3.9094930483647013`*^9, 3.9095458650144787`*^9, 
+   3.909723833837728*^9, 3.910063466625875*^9, 3.9100955430777197`*^9},
+ CellLabel->
+  "Out[42]//MatrixForm=",ExpressionUUID->"1d5b2598-ac72-4ccd-9c3c-\
+d644de3c7db4"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"TransferFunction", "[", 
+    RowBox[{"A_", ",", " ", "b_"}], "]"}], ":=", " ", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Gamma]", "\[Element]", "Reals"}], ",", 
+       RowBox[{"\[Omega]", "\[Element]", "Reals"}]}], "}"}], ",", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{"Inverse", "[", 
+        RowBox[{
+         RowBox[{"s", "*", 
+          RowBox[{"\[ScriptCapitalI]", "[", "4", "]"}]}], "-", " ", "A"}], 
+        "]"}], ".", "b"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.909463921092725*^9, 3.909463969621842*^9}, {
+   3.9094640560299187`*^9, 3.909464063302751*^9}, {3.909464109598435*^9, 
+   3.909464110574534*^9}, 3.9094649269663553`*^9, {3.909482696242049*^9, 
+   3.909482713319603*^9}, {3.909482764602077*^9, 3.9094827677685013`*^9}, 
+   3.909492338408032*^9},
+ CellLabel->"In[43]:=",ExpressionUUID->"6dbd8866-27b0-4d60-b7b3-32d03b4750a3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Gx", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A", ",", " ", 
+    SubscriptBox["b", "x"]}], "  ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gx", "]"}]}], "Input",
+ CellChangeTimes->{{3.909222796101776*^9, 3.9092228181949253`*^9}, {
+   3.909224740883*^9, 3.909224742441881*^9}, 3.909225945195025*^9, {
+   3.909387698081307*^9, 3.909387783131432*^9}, {3.9094634629507513`*^9, 
+   3.909463502886393*^9}, {3.909463543865076*^9, 3.909463579839324*^9}, 
+   3.909464512915759*^9, {3.909465070813943*^9, 3.9094650998407288`*^9}, 
+   3.909465200900605*^9, 3.909465576719857*^9, 3.90946563262267*^9, 
+   3.909473528927244*^9, 3.9094777054773893`*^9, 3.9094825801945353`*^9, {
+   3.909545067823615*^9, 3.909545070405593*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"af6a590f-fd2a-4237-bd88-98baa2235779"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       FractionBox[
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "s"}], "+", "\[Gamma]"}], ")"}]}], 
+        RowBox[{
+         RowBox[{"4", " ", 
+          SuperscriptBox["s", "2"]}], "+", 
+         RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+          SuperscriptBox["\[Omega]", "2"]}]}]]},
+      {
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"4", " ", "\[Omega]"}], 
+         RowBox[{
+          RowBox[{"4", " ", 
+           SuperscriptBox["s", "2"]}], "+", 
+          RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+          SuperscriptBox["\[Gamma]", "2"], "+", 
+          RowBox[{"4", " ", 
+           SuperscriptBox["\[Omega]", "2"]}]}]]}]},
+      {
+       FractionBox["\[Gamma]", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.909463575316025*^9, 3.909463580275457*^9}, 
+   3.9094645928585*^9, 3.909464934387362*^9, 3.909465100908661*^9, 
+   3.909465203264638*^9, 3.909465577783279*^9, 3.909465650691708*^9, 
+   3.909466415084312*^9, {3.909466496234593*^9, 3.909466512429191*^9}, 
+   3.909473517880417*^9, 3.909474209296875*^9, 3.9094742747971907`*^9, 
+   3.9094769536862583`*^9, 3.909477526049697*^9, 3.90947770678631*^9, {
+   3.909482570458207*^9, 3.909482581206246*^9}, 3.90948271768661*^9, 
+   3.909482774632834*^9, 3.9094830052274227`*^9, 3.909483715646106*^9, 
+   3.909492173325122*^9, 3.909492352935615*^9, 3.909544881692998*^9, 
+   3.909545162923519*^9, 3.9095458650440407`*^9, 3.909723833896204*^9, 
+   3.9100634666806183`*^9, 3.910095543104472*^9},
+ CellLabel->
+  "Out[45]//MatrixForm=",ExpressionUUID->"2bb1027d-dae1-4015-b50c-\
+161c1a6ca711"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"A2", " ", ":=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", " ", 
+       RowBox[{"0", ",", " ", 
+        RowBox[{"-", "\[Omega]"}], ",", "      ", "0", ",", "   ", "0"}], 
+       "}"}], ",", "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{"\[Omega]", ",", "     ", 
+        RowBox[{"-", "\[Gamma]"}], ",", " ", "0", ",", "   ", "0"}], "}"}], 
+      ",", "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{"0", ",", "         ", "0", ",", "    ", 
+        RowBox[{"-", "\[Gamma]"}], ",", "   ", "\[Gamma]"}], "}"}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{
+       "0", ",", "          ", "0", ",", "      ", "0", ",", "   ", "0"}], 
+       "}"}]}], "}"}]}], " ", ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{"Gx2", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A2", ",", " ", 
+    SubscriptBox["b", "x"]}], "  ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gx2", "]"}]}], "Input",
+ CellChangeTimes->{{3.909464818466941*^9, 3.909464846767685*^9}, 
+   3.9094651211398163`*^9, 3.909465185780581*^9, 3.909465607447392*^9, 
+   3.909465643589938*^9, 3.9094776907965117`*^9, 3.909482604274499*^9, {
+   3.9095450722864847`*^9, 3.909545076468607*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"653bf6c1-0a23-460b-a7a9-52136259a2ba"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       FractionBox[
+        RowBox[{"s", "+", "\[Gamma]"}], 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Omega]", "2"]}]]},
+      {
+       FractionBox["\[Omega]", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Omega]", "2"]}]]},
+      {
+       FractionBox["\[Gamma]", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.909464850625252*^9, 3.909464974209222*^9, 3.909465126789258*^9, 
+   3.909465186936123*^9, 3.909465608405064*^9, 3.909465650730804*^9, 
+   3.909466415129561*^9, {3.9094664962696657`*^9, 3.909466512468157*^9}, 
+   3.90947355676252*^9, 3.909474209348332*^9, 3.909474274852538*^9, 
+   3.909476953722865*^9, 3.909477526083256*^9, 3.909477691923148*^9, 
+   3.909482605157889*^9, 3.9094828046147118`*^9, 3.909483005261269*^9, 
+   3.909483715686542*^9, 3.909492173362002*^9, 3.9095449057991743`*^9, 
+   3.909545131540761*^9, 3.909545164379697*^9, 3.909545865058511*^9, 
+   3.9097238339077177`*^9, 3.910063466693323*^9, 3.910095543239142*^9},
+ CellLabel->
+  "Out[48]//MatrixForm=",ExpressionUUID->"94548e74-792c-4080-8e5f-\
+0febb6cb2b4b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"A2n", " ", ":=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", " ", 
+       RowBox[{"0", ",", " ", 
+        RowBox[{"-", "25"}], ",", "      ", "0", ",", "   ", "0"}], "}"}], 
+      ",", "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{"25", ",", "     ", 
+        RowBox[{"-", "2"}], ",", " ", "0", ",", "   ", "0"}], "}"}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{"0", ",", "         ", "0", ",", "    ", 
+        RowBox[{"-", "2"}], ",", "   ", "2"}], "}"}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"{", "     ", 
+       RowBox[{
+       "0", ",", "          ", "0", ",", "      ", "0", ",", "   ", "0"}], 
+       "}"}]}], "}"}]}], " ", ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{"Gx2n", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A2n", ",", " ", 
+    SubscriptBox["b", "x"]}], "  ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gx2n", "]"}]}], "Input",
+ CellChangeTimes->{{3.909465844413083*^9, 3.909465907683668*^9}, {
+   3.909473590240333*^9, 3.909473594383375*^9}, 3.9094777462617064`*^9, 
+   3.9094826116505003`*^9, {3.909545106080329*^9, 3.909545126821066*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"7f6709b8-9cfb-4ec0-88f0-b6c143a9699d"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       FractionBox[
+        RowBox[{"2", "+", "s"}], 
+        RowBox[{"625", "+", 
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]},
+      {
+       FractionBox["25", 
+        RowBox[{"625", "+", 
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]},
+      {
+       FractionBox["2", 
+        RowBox[{
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.9094735949145927`*^9, 3.909474209381792*^9, 3.909474274885446*^9, 
+   3.909476953743848*^9, 3.909477526098752*^9, 3.909477747639969*^9, 
+   3.9094826126270847`*^9, 3.9094828067427053`*^9, 3.909483005290761*^9, 
+   3.909483715710642*^9, 3.909492173378878*^9, {3.909544914769204*^9, 
+   3.909544924568849*^9}, 3.909545135162146*^9, 3.909545166011869*^9, 
+   3.909545865083593*^9, 3.909723833934901*^9, 3.910063466718504*^9, 
+   3.9100955433422832`*^9},
+ CellLabel->
+  "Out[51]//MatrixForm=",ExpressionUUID->"9f201e58-80de-4ee6-89f6-\
+36ddac22a0b1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"Gx2n", " ", "==", "Gx"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9094657289962177`*^9, 3.909465778612217*^9}, {
+   3.90946591693797*^9, 3.909465959534584*^9}, 3.909544938422945*^9, {
+   3.909545141270687*^9, 3.909545142724855*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"9335f83e-d81b-4d23-b0d5-6004a6d773ca"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", "\[Rule]", 
+      RowBox[{"-", "27"}]}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "26"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", "\[Rule]", "23"}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "24"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.9094657435204353`*^9, 3.9094657797486153`*^9}, {
+   3.909465918646955*^9, 3.9094659254793262`*^9}, {3.909465955899191*^9, 
+   3.909465981595252*^9}, 3.909466415189851*^9, {3.909466496299761*^9, 
+   3.909466512528047*^9}, 3.909473605141039*^9, 3.909474209402401*^9, 
+   3.909474274919767*^9, 3.909476953773035*^9, 3.909477526114423*^9, 
+   3.909477767141439*^9, 3.909482616153324*^9, 3.909482808521603*^9, 
+   3.909483005314633*^9, 3.9094837157461357`*^9, 3.909492173400505*^9, {
+   3.9095449313582077`*^9, 3.9095449390952*^9}, {3.90954514381384*^9, 
+   3.909545167826391*^9}, 3.909545235067607*^9, 3.909545865107195*^9, 
+   3.9097238339562607`*^9, 3.910063466740281*^9, 3.910095543577338*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"ff93a941-227e-4824-a4c4-6b9ed487f7c8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"Gx2n", " ", "==", "Gx2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.909465967380381*^9, 3.909465972371419*^9}, 
+   3.909473627591037*^9, {3.909545239855308*^9, 3.90954524130276*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"5534be67-24f1-423e-bf40-cd691d5d6d8c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+    RowBox[{"\[Omega]", "\[Rule]", "25"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.909465972804061*^9, 3.909466415208227*^9, {3.9094664963140697`*^9, 
+   3.9094665125422287`*^9}, 3.909473629181694*^9, 3.909474209421567*^9, 
+   3.909474274950099*^9, 3.909476953786874*^9, 3.9094775261308813`*^9, 
+   3.909477774567631*^9, 3.909482620842235*^9, 3.909482810020194*^9, 
+   3.909483005334982*^9, 3.909483715764244*^9, 3.90949217341325*^9, 
+   3.909544957333353*^9, 3.909545243124156*^9, 3.909545865122119*^9, 
+   3.909723833967752*^9, 3.910063466752859*^9, 3.910095543611147*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"d1fba3f1-ab60-4a9d-b99a-c32e73ee8fb5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Gy", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A", ",", " ", 
+    SubscriptBox["b", "y"]}], " ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gy", "]"}]}], "Input",
+ CellChangeTimes->{{3.9094736759770727`*^9, 3.909473687849023*^9}, {
+  3.909473719497753*^9, 3.909473738162785*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"54b8738c-fc3f-43e4-a874-661ff1a0dc9f"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       FractionBox[
+        RowBox[{"4", " ", "\[Omega]"}], 
+        RowBox[{
+         RowBox[{"4", " ", 
+          SuperscriptBox["s", "2"]}], "+", 
+         RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+          SuperscriptBox["\[Omega]", "2"]}]}]]},
+      {
+       FractionBox[
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "s"}], "+", "\[Gamma]"}], ")"}]}], 
+        RowBox[{
+         RowBox[{"4", " ", 
+          SuperscriptBox["s", "2"]}], "+", 
+         RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+          SuperscriptBox["\[Omega]", "2"]}]}]]},
+      {
+       FractionBox["\[Gamma]", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.909473688964911*^9, {3.90947373275663*^9, 3.909473739084531*^9}, 
+   3.909474209458116*^9, 3.909474274985272*^9, 3.909476953829854*^9, 
+   3.909477526163533*^9, 3.9094828192333603`*^9, 3.909483005362859*^9, 
+   3.9094837157921143`*^9, 3.9094921734479923`*^9, 3.909545267448992*^9, 
+   3.909545865149431*^9, 3.9097238339821663`*^9, 3.910063466769973*^9, 
+   3.910095543720172*^9},
+ CellLabel->
+  "Out[55]//MatrixForm=",ExpressionUUID->"a0c02f46-5b11-451d-8e5e-\
+f01ee3253d4b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Gy2", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A2", ",", " ", 
+    SubscriptBox["b", "y"]}], " ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gy2", " ", "]"}]}], "Input",
+ CellChangeTimes->{{3.9094736983460703`*^9, 3.9094737450735283`*^9}, {
+  3.909545274638783*^9, 3.909545325760952*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"7f994bf0-dfdc-4793-b42d-53168c5a5efe"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"-", 
+        FractionBox["\[Omega]", 
+         RowBox[{
+          SuperscriptBox["s", "2"], "+", 
+          RowBox[{"s", " ", "\[Gamma]"}], "+", 
+          SuperscriptBox["\[Omega]", "2"]}]]}]},
+      {
+       FractionBox["s", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}], "+", 
+         SuperscriptBox["\[Omega]", "2"]}]]},
+      {
+       FractionBox["\[Gamma]", 
+        RowBox[{
+         SuperscriptBox["s", "2"], "+", 
+         RowBox[{"s", " ", "\[Gamma]"}]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.909473701157773*^9, 3.909473745986784*^9, 3.909474209476219*^9, 
+   3.9094742750052357`*^9, 3.909476953852524*^9, 3.909477526177122*^9, 
+   3.909482834337771*^9, 3.909483005376748*^9, 3.9094837158063993`*^9, 
+   3.909492173465951*^9, {3.909545286981227*^9, 3.909545326796941*^9}, 
+   3.909545865166603*^9, 3.909723833995566*^9, 3.910063466786968*^9, 
+   3.910095543797133*^9},
+ CellLabel->
+  "Out[57]//MatrixForm=",ExpressionUUID->"b22aee76-e53c-43f1-839e-\
+a5bfdc9f3114"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Gy2n", " ", ":=", 
+  RowBox[{"TransferFunction", "[", 
+   RowBox[{"A2n", ",", " ", 
+    SubscriptBox["b", "y"]}], " ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Gy2n", "]"}]}], "Input",
+ CellChangeTimes->{{3.909473779897807*^9, 3.9094737882495127`*^9}, {
+  3.909545338016019*^9, 3.90954534849437*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"7f7422d7-f3c9-4514-a498-e4eef49d22e3"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"-", 
+        FractionBox["25", 
+         RowBox[{"625", "+", 
+          RowBox[{"2", " ", "s"}], "+", 
+          SuperscriptBox["s", "2"]}]]}]},
+      {
+       FractionBox["s", 
+        RowBox[{"625", "+", 
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]},
+      {
+       FractionBox["2", 
+        RowBox[{
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]},
+      {
+       FractionBox["1", "s"]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9094737891193438`*^9, 3.909474209511457*^9, 
+  3.909474275042923*^9, 3.9094769538964567`*^9, 3.909477526205172*^9, 
+  3.909482884056324*^9, 3.909483005403948*^9, 3.909483715833666*^9, 
+  3.9094921734952*^9, 3.9095453525963993`*^9, 3.909545865183819*^9, 
+  3.909723834009193*^9, 3.9100634668069973`*^9, 3.9100955439613333`*^9},
+ CellLabel->
+  "Out[59]//MatrixForm=",ExpressionUUID->"33557068-cd6a-4a28-a9bf-\
+123c1fbd5609"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Assuming", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", ">", "0"}], ",", 
+     RowBox[{"_", "\[Element]", "Reals"}]}], "}"}], ",", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{"Gy2n", "==", "Gy"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.90947414973862*^9, 3.9094741879380417`*^9}, {
+  3.909545364343438*^9, 3.909545369334304*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"2163f5e4-e026-44fe-a0b7-89a000c2ebf9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["25", 
+       RowBox[{"625", "+", 
+        RowBox[{"2", " ", "s"}], "+", 
+        SuperscriptBox["s", "2"]}]]}], "-", 
+     FractionBox[
+      RowBox[{"4", " ", "\[Omega]"}], 
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox["s", "2"]}], "+", 
+       RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+        SuperscriptBox["\[Omega]", "2"]}]}]]}], ",", 
+    RowBox[{
+     FractionBox["s", 
+      RowBox[{"625", "+", 
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], "-", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", " ", "s"}], "+", "\[Gamma]"}], ")"}]}], 
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox["s", "2"]}], "+", 
+       RowBox[{"4", " ", "s", " ", "\[Gamma]"}], "+", 
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+        SuperscriptBox["\[Omega]", "2"]}]}]]}], ",", 
+    FractionBox[
+     RowBox[{"2", "-", "\[Gamma]"}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"2", "+", "s"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"s", "+", "\[Gamma]"}], ")"}]}]], ",", "0"}], "}"}], 
+  "\[Equal]", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}]], "Output",
+ CellChangeTimes->{{3.909474157421789*^9, 3.909474209529784*^9}, 
+   3.909474275139723*^9, 3.9094769539922523`*^9, 3.909477526223634*^9, 
+   3.909483005492025*^9, 3.909483715924121*^9, 3.909492173584693*^9, 
+   3.9095453715161877`*^9, 3.909545865277172*^9, 3.9097238341049337`*^9, 
+   3.910063466908544*^9, 3.910095544473029*^9},
+ CellLabel->"Out[60]=",ExpressionUUID->"2a129293-74b1-422e-97a7-ef0d73c099da"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"Gy2n", " ", "==", "Gy"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9094738018250113`*^9, 3.9094738086960373`*^9}, {
+  3.909545379879406*^9, 3.909545390558481*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"09c3ca82-e9ae-4d77-b032-7b18b5d0da76"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", "\[Rule]", 
+      RowBox[{"-", "25"}]}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "24"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", "\[Rule]", "25"}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "26"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.909473809715125*^9, 3.909474209548649*^9, 
+  3.9094742751554956`*^9, 3.909476954008767*^9, 3.909477526238224*^9, 
+  3.9094829101086063`*^9, 3.909483005505436*^9, 3.909483715937818*^9, 
+  3.9094921736006737`*^9, 3.909545391481018*^9, 3.9095458652914257`*^9, 
+  3.909723834116818*^9, 3.9100634669214487`*^9, 3.9100955446207323`*^9},
+ CellLabel->"Out[61]=",ExpressionUUID->"7331c326-b294-4226-91cd-5b629f434c6a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"tfmx", " ", "=", " ", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{"Gx", ",", "s"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"tfmx2", " ", "=", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{"Gx2", ",", "s"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tfmx2n", " ", "=", 
+   RowBox[{"TransferFunctionModel", "[", 
+    RowBox[{"Gx2n", ",", "s"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.909474537874345*^9, 3.9094745892671537`*^9}, 
+   3.909475880841694*^9, 3.9094762144435253`*^9, {3.9094766216928463`*^9, 
+   3.9094766486204243`*^9}, {3.909476780455914*^9, 3.909476797879362*^9}, {
+   3.909476893165534*^9, 3.909476918318201*^9}, {3.909545450625249*^9, 
+   3.90954551388713*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"7c3e3d88-43ab-4ddf-b7af-f16eb86b0d1d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"2", " ", 
+       RowBox[{"(", 
+         RowBox[{"\[Gamma]", "+", 
+           RowBox[{"2", " ", "s"}]}], ")"}]}], 
+     RowBox[{
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["\[Omega]", "2"]}], "+", 
+       RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["s", "2"]}]}]], 
+    RowBox[{"-", 
+      FractionBox[
+       RowBox[{"4", " ", "\[Omega]"}], 
+       RowBox[{
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["\[Omega]", "2"]}], "+", 
+         RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["s", "2"]}]}]]}], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{
+     2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) \
+$CellContext`\[Omega], $CellContext`\[Gamma], 1}}, {{
+     4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.909545866270368*^9, 3.909723835079089*^9, 
+  3.910063468001532*^9, 3.9100955457653847`*^9},
+ CellLabel->"Out[62]=",ExpressionUUID->"19a0147e-79ef-4cff-9184-6dc67db98d1d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"\[Gamma]", "+", "s"}], 
+     RowBox[{
+       SuperscriptBox["\[Omega]", "2"], "+", 
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["\[Omega]", 
+     RowBox[{
+       SuperscriptBox["\[Omega]", "2"], "+", 
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{$CellContext`s + $CellContext`\[Gamma], \
+$CellContext`\[Omega], $CellContext`\[Gamma], 
+          1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{$CellContext`s + $CellContext`\[Gamma], \
+$CellContext`\[Omega], $CellContext`\[Gamma], 
+          1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{$CellContext`s + $CellContext`\[Gamma], \
+$CellContext`\[Omega], $CellContext`\[Gamma], 
+      1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.909545866270368*^9, 3.909723835079089*^9, 
+  3.910063468001532*^9, 3.910095545879142*^9},
+ CellLabel->"Out[63]=",ExpressionUUID->"b7357f0d-a561-4c95-aaca-07d0fd8020fb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"2", "+", "s"}], 
+     RowBox[{"625", "+", 
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["25", 
+     RowBox[{"625", "+", 
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["2", 
+     RowBox[{
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{2 + $CellContext`s, 25, 2, 1}}, {{
+         625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+          2 $CellContext`s + $CellContext`s^2, 
+          2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, \
+$CellContext`s], AutoDelete -> True, Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{2 + $CellContext`s, 25, 2, 1}}, {{
+         625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+          2 $CellContext`s + $CellContext`s^2, 
+          2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, \
+$CellContext`s]], 1, {}, {False, False}, False, Automatic, None, 
+     Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{2 + $CellContext`s, 25, 2, 1}}, {{
+     625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+      2 $CellContext`s + $CellContext`s^2, 
+      2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, $CellContext`s],
+  
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.909545866270368*^9, 3.909723835079089*^9, 
+  3.910063468001532*^9, 3.910095546110106*^9},
+ CellLabel->"Out[64]=",ExpressionUUID->"ee00c27d-efd6-415b-9b13-940ab4212776"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"2", " ", 
+       RowBox[{"(", 
+         RowBox[{"\[Gamma]", "+", 
+           RowBox[{"2", " ", "s"}]}], ")"}]}], 
+     RowBox[{
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["\[Omega]", "2"]}], "+", 
+       RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["s", "2"]}]}]], 
+    RowBox[{"-", 
+      FractionBox[
+       RowBox[{"4", " ", "\[Omega]"}], 
+       RowBox[{
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["\[Omega]", "2"]}], "+", 
+         RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["s", "2"]}]}]]}], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + (
+            4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 
+          4 $CellContext`s^2 + (
+            4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + (
+            4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 
+          4 $CellContext`s^2 + (
+            4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", 
+      "$CellContext`s", ",", "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{
+     2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) \
+$CellContext`\[Omega], $CellContext`\[Gamma], 1}}, {{
+     4 $CellContext`s^2 + (
+        4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, 
+      4 $CellContext`s^2 + (
+        4 $CellContext`s) $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Input",
+ CellChangeTimes->{{3.909545544154488*^9, 3.909545544155704*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"6750ffa4-8b5a-4697-bf7b-91dfabc8801a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"2", " ", 
+       RowBox[{"(", 
+         RowBox[{"\[Gamma]", "+", 
+           RowBox[{"2", " ", "s"}]}], ")"}]}], 
+     RowBox[{
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["\[Omega]", "2"]}], "+", 
+       RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["s", "2"]}]}]], 
+    RowBox[{"-", 
+      FractionBox[
+       RowBox[{"4", " ", "\[Omega]"}], 
+       RowBox[{
+         SuperscriptBox["\[Gamma]", "2"], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["\[Omega]", "2"]}], "+", 
+         RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+         RowBox[{"4", " ", 
+           SuperscriptBox["s", "2"]}]}]]}], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{
+         2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) $CellContext`\
+\[Omega], $CellContext`\[Gamma], 1}}, {{
+         4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{
+     2 (2 $CellContext`s + $CellContext`\[Gamma]), (-4) \
+$CellContext`\[Omega], $CellContext`\[Gamma], 1}}, {{
+     4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.909477526350748*^9, 3.90948300648531*^9, 
+  3.909483716985497*^9, 3.9094921746633263`*^9, 3.909545517276443*^9, 
+  3.9095458665929613`*^9, 3.909723835315669*^9, 3.910063468237995*^9, 
+  3.91009554684587*^9},
+ CellLabel->"Out[65]=",ExpressionUUID->"4c250842-c4b7-4a01-b783-efd026d07809"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"tfmy", " ", "=", " ", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{"Gy", ",", "s"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"tfmy2", " ", "=", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{"Gy2", ",", "s"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"tfmy2n", " ", "=", 
+  RowBox[{"TransferFunctionModel", "[", 
+   RowBox[{"Gy2n", ",", "s"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"tfmy", "[", "x", "]"}], " ", "==", 
+   RowBox[{"tfmy2n", "[", "x", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.909545751041602*^9, 3.9095457835915956`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"ed0e8e4d-a2ad-4b60-b3b0-f39fca78b73e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    FractionBox[
+     RowBox[{"4", " ", "\[Omega]"}], 
+     RowBox[{
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["\[Omega]", "2"]}], "+", 
+       RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["s", "2"]}]}]], 
+    FractionBox[
+     RowBox[{"2", " ", 
+       RowBox[{"(", 
+         RowBox[{"\[Gamma]", "+", 
+           RowBox[{"2", " ", "s"}]}], ")"}]}], 
+     RowBox[{
+       SuperscriptBox["\[Gamma]", "2"], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["\[Omega]", "2"]}], "+", 
+       RowBox[{"4", " ", "\[Gamma]", " ", "s"}], "+", 
+       RowBox[{"4", " ", 
+         SuperscriptBox["s", "2"]}]}]], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{
+         4 $CellContext`\[Omega], 
+          2 (2 $CellContext`s + $CellContext`\[Gamma]), $CellContext`\[Gamma],
+           1}}, {{4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{
+         4 $CellContext`\[Omega], 
+          2 (2 $CellContext`s + $CellContext`\[Gamma]), $CellContext`\[Gamma],
+           1}}, {{4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+          4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+          4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{
+     4 $CellContext`\[Omega], 
+      2 (2 $CellContext`s + $CellContext`\[Gamma]), $CellContext`\[Gamma], 
+      1}}, {{4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, 4 $CellContext`s^2 + 
+      4 $CellContext`s $CellContext`\[Gamma] + $CellContext`\[Gamma]^2 + 
+      4 $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.9095457853108177`*^9, 3.909545866670144*^9, 
+  3.909723835356742*^9, 3.910063468269712*^9, 3.910095547146068*^9},
+ CellLabel->"Out[66]=",ExpressionUUID->"9059980f-4250-4f46-b5dd-867e91e48903"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    RowBox[{"-", 
+      FractionBox["\[Omega]", 
+       RowBox[{
+         SuperscriptBox["\[Omega]", "2"], "+", 
+         RowBox[{"\[Gamma]", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]}], 
+    FractionBox["s", 
+     RowBox[{
+       SuperscriptBox["\[Omega]", "2"], "+", 
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["\[Gamma]", 
+     RowBox[{
+       RowBox[{"\[Gamma]", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{-$CellContext`\[Omega], $CellContext`s, \
+$CellContext`\[Gamma], 
+          1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s], AutoDelete -> True,
+       Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{-$CellContext`\[Omega], $CellContext`s, \
+$CellContext`\[Gamma], 
+          1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s]], 1, {}, {
+     False, False}, False, Automatic, None, Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{-$CellContext`\[Omega], $CellContext`s, \
+$CellContext`\[Gamma], 
+      1}}, {{$CellContext`s^2 + $CellContext`s $CellContext`\[Gamma] + \
+$CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s $CellContext`\
+\[Gamma] + $CellContext`\[Omega]^2, $CellContext`s^2 + $CellContext`s \
+$CellContext`\[Gamma], $CellContext`s}}}, $CellContext`s],
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.9095457853108177`*^9, 3.909545866670144*^9, 
+  3.909723835356742*^9, 3.910063468269712*^9, 3.910095547257882*^9},
+ CellLabel->"Out[67]=",ExpressionUUID->"0a0611ea-eff7-4bf8-805f-576efcef3582"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TemplateBox[{
+    RowBox[{"-", 
+      FractionBox["25", 
+       RowBox[{"625", "+", 
+         RowBox[{"2", " ", "s"}], "+", 
+         SuperscriptBox["s", "2"]}]]}], 
+    FractionBox["s", 
+     RowBox[{"625", "+", 
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["2", 
+     RowBox[{
+       RowBox[{"2", " ", "s"}], "+", 
+       SuperscriptBox["s", "2"]}]], 
+    FractionBox["1", "s"], 
+    InterpretationBox["\[InvisibleSpace]", None], {
+    TransferFunctionModel, {
+     False, False, {False, False}}, $Failed, {{
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+       Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}, {
+      Control`CommonDump`$DUMMY$}}, InterpretationBox[#, 
+      TransferFunctionModel[{{{-25, $CellContext`s, 2, 1}}, {{
+         625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+          2 $CellContext`s + $CellContext`s^2, 
+          2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, \
+$CellContext`s], AutoDelete -> True, Editable -> True, BaseStyle -> 
+      "TransferFunctionModelMinimal"]& , $CellContext`s, 4, 1, 
+     Control`CountStates[
+      TransferFunctionModel[{{{-25, $CellContext`s, 2, 1}}, {{
+         625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+          2 $CellContext`s + $CellContext`s^2, 
+          2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, \
+$CellContext`s]], 1, {}, {False, False}, False, Automatic, None, 
+     Automatic}, {}},
+   "TransferFunctionModelFull",
+   BaseStyle->{NumberMarks -> False},
+   DisplayFunction->(TagBox[
+     SubsuperscriptBox[
+      RowBox[{"(", 
+        GridBox[{{#, #2, #3, #4}}, AllowedDimensions -> {4, 1}, 
+         GridBoxDividers -> {
+          "Rows" -> {False, {False}, False}, 
+           "Columns" -> {False, {False}, False}}, DefaultBaseStyle -> 
+         "SystemsModelGrid00"], ")"}], #5, 
+      ButtonBox[
+       GraphicsBox[{
+         RectangleBox[{0, 0}, DefaultBaseStyle -> "SystemsModelSuperscript"], 
+         
+         InsetBox[
+          StyleBox[
+          "\[ScriptCapitalT]", DefaultBaseStyle -> 
+           "SystemsModelSuperscript"], {0.5, 0.5}]}, ImageSize -> 20], 
+       ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+         ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+       None], MultilineFunction -> None], 
+     EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+           FrontEnd`Value[
+            FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+       True}]]& ),
+   InterpretationFunction->(
+    RowBox[{"TransferFunctionModel", "[", "Unevaluated", "[", 
+      RowBox[{"{", 
+        RowBox[{"{", 
+          TemplateSlotSequence[{1, 4}, ","], "}"}], "}"}], "]", ",", "s", ",",
+       "SamplingPeriod", "->", 
+      RowBox[{#5}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+   Tooltip->TransferFunctionModel],
+  TransferFunctionModel[{{{-25, $CellContext`s, 2, 1}}, {{
+     625 + 2 $CellContext`s + $CellContext`s^2, 625 + 
+      2 $CellContext`s + $CellContext`s^2, 
+      2 $CellContext`s + $CellContext`s^2, $CellContext`s}}}, $CellContext`s],
+  
+  AutoDelete->True,
+  BaseStyle->"TransferFunctionModelMinimal",
+  Editable->True]], "Output",
+ CellChangeTimes->{3.9095457853108177`*^9, 3.909545866670144*^9, 
+  3.909723835356742*^9, 3.910063468269712*^9, 3.910095547509306*^9},
+ CellLabel->"Out[68]=",ExpressionUUID->"aeca24f0-d7af-4efa-807a-d9ecfb2d834b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{"-", "25"}]}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "24"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "25"}], ",", 
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"-", "26"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9095457853108177`*^9, 3.909545866670144*^9, 
+  3.909723835356742*^9, 3.910063468269712*^9, 3.9100955475384407`*^9},
+ CellLabel->"Out[69]=",ExpressionUUID->"8d254904-cee6-4081-aa1b-b21356cd7574"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Coefx", " ", "=", 
+  RowBox[{"CoefficientList", "[", 
+   RowBox[{
+    RowBox[{"Denominator", "[", 
+     RowBox[{"Gx", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "s"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.909723852498692*^9, 3.9097239104678164`*^9}, {
+  3.9097239505243587`*^9, 3.9097240248512163`*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"d369f740-0ea3-4602-982a-faa37d754a5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "2"], "+", 
+    RowBox[{"4", " ", 
+     SuperscriptBox["\[Omega]", "2"]}]}], ",", 
+   RowBox[{"4", " ", "\[Gamma]"}], ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.909723992963081*^9, 3.9097240829876966`*^9, 
+  3.910063468343339*^9, 3.910095547748263*^9},
+ CellLabel->"Out[70]=",ExpressionUUID->"b64c2eed-2107-433e-ab1b-5cc6007e1732"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Coefxn", "=", " ", 
+  RowBox[{"CoefficientList", "[", 
+   RowBox[{
+    RowBox[{"Denominator", "[", 
+     RowBox[{"Gx2n", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "s"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.909724033556638*^9, 3.9097240382434072`*^9}},
+ CellLabel->"In[71]:=",ExpressionUUID->"02276769-dffe-4462-81a1-25fdbb663dcf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"625", ",", "2", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{3.909723997915173*^9, 3.909724039225363*^9, 
+  3.90972408453557*^9, 3.910063468358714*^9, 3.910095547892899*^9},
+ CellLabel->"Out[71]=",ExpressionUUID->"a77ff229-cbb2-474c-8b34-9a2623ef3ba4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "Coefxn", "]"}]], "Input",
+ NumberMarks->False,
+ CellLabel->"In[76]:=",ExpressionUUID->"b42663b8-b484-46a7-a077-5f8c028a7ce4"],
+
+Cell[BoxData["628"], "Output",
+ CellChangeTimes->{3.910095676089285*^9},
+ CellLabel->"Out[76]=",ExpressionUUID->"51dd64e0-ab63-4657-abc4-92e5c68c44a7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Coefxnorm", " ", "=", " ", 
+  RowBox[{"CoefficientList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Denominator", "[", 
+      RowBox[{"Gx", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}], "/", 
+     RowBox[{"Last", "[", "Coefx", "]"}]}], ",", "s"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.910063406799699*^9, 3.9100634153098507`*^9}, {
+  3.910063447744342*^9, 3.910063474751596*^9}, {3.910063581956237*^9, 
+  3.910063622105595*^9}},
+ CellLabel->"In[72]:=",ExpressionUUID->"cd72f2e6-d0d5-4885-8047-ce1780059e86"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    FractionBox[
+     SuperscriptBox["\[Gamma]", "2"], "4"], "+", 
+    SuperscriptBox["\[Omega]", "2"]}], ",", "\[Gamma]", ",", "1"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.910063411346066*^9, 3.910063417219368*^9}, {
+   3.910063455058407*^9, 3.910063475164304*^9}, 3.91006362735503*^9, 
+   3.91009554810843*^9},
+ CellLabel->"Out[72]=",ExpressionUUID->"fc19bf36-8a22-4d19-a810-5aae9ccdbe4f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Coefxnorm", " ", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], " ", "==", " ", 
+     RowBox[{"Coefxn", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"Coefxnorm", " ", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], " ", "==", " ", 
+     RowBox[{"Coefxn", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.909724050820932*^9, 3.909724135436207*^9}, {
+  3.909724176261516*^9, 3.909724193411881*^9}, {3.9100636369645042`*^9, 
+  3.910063649112741*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"8b3abbb3-fc4f-4929-9a34-e41c920dcbbc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "4"}], " ", 
+       SqrtBox["39"]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Gamma]", "\[Rule]", "2"}], ",", 
+     RowBox[{"\[Omega]", "\[Rule]", 
+      RowBox[{"4", " ", 
+       SqrtBox["39"]}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.909724063095861*^9, 3.9097240856998453`*^9}, {
+   3.909724115719413*^9, 3.909724136117012*^9}, {3.909724186627514*^9, 
+   3.9097241942853928`*^9}, 3.910063468384719*^9, 3.910063650854518*^9, 
+   3.9100955483050547`*^9},
+ CellLabel->"Out[73]=",ExpressionUUID->"6057fcb8-edd2-4be8-b2bd-0de0ac539d06"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"24.979991994", " "}], "\[IndentingNewLine]", 
+ RowBox[{"4", " ", 
+  SqrtBox["39"]}]}], "Input",
+ CellChangeTimes->{{3.9100637123113117`*^9, 3.9100637373687477`*^9}},
+ CellLabel->"In[74]:=",ExpressionUUID->"b7b4534d-172a-4f6e-bf22-b443bc9267a6"],
+
+Cell[BoxData["24.979991994`"], "Output",
+ CellChangeTimes->{3.910063738026443*^9, 3.9100955483355637`*^9},
+ CellLabel->"Out[74]=",ExpressionUUID->"6ca552f3-0de1-47de-8d89-357e30ac81ab"],
+
+Cell[BoxData[
+ RowBox[{"4", " ", 
+  SqrtBox["39"]}]], "Output",
+ CellChangeTimes->{3.910063738026443*^9, 3.9100955483415537`*^9},
+ CellLabel->"Out[75]=",ExpressionUUID->"186763c2-6cdf-42bf-8a4b-f1ba359dc985"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{648.75, 622.5},
+WindowMargins->{{Automatic, 74.25}, {34.5, Automatic}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3ff8693a-9dcb-4ca0-beae-af0877c2319c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 191, 3, 160, "Title",ExpressionUUID->"49e6daef-0f6b-432f-aa4e-baf953481fd0"],
+Cell[774, 27, 1347, 35, 76, "DisplayFormula",ExpressionUUID->"7badde83-0eb4-4e0f-ae22-aa86d8b71650"],
+Cell[2124, 64, 1505, 36, 119, "Input",ExpressionUUID->"ed6425a0-4863-4b94-b9dc-aa3b948912dc"],
+Cell[CellGroupData[{
+Cell[3654, 104, 2057, 56, 139, "Input",ExpressionUUID->"da7c5deb-d69d-4234-9474-03c3aed3e70c"],
+Cell[5714, 162, 1282, 35, 111, "Output",ExpressionUUID->"f0358e28-4fb8-41bb-ba1e-00a8816efaf1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7033, 202, 5520, 144, 425, "Input",ExpressionUUID->"a447a734-9306-4d90-aba7-9e1af74ddb45"],
+Cell[12556, 348, 569, 8, 33, "Output",ExpressionUUID->"bb3a840f-e189-4d2a-80c6-1007fc228849"],
+Cell[13128, 358, 1295, 33, 109, "Output",ExpressionUUID->"1d5b2598-ac72-4ccd-9c3c-d644de3c7db4"]
+}, Open  ]],
+Cell[14438, 394, 983, 23, 54, "Input",ExpressionUUID->"6dbd8866-27b0-4d60-b7b3-32d03b4750a3"],
+Cell[CellGroupData[{
+Cell[15446, 421, 856, 14, 52, "Input",ExpressionUUID->"af6a590f-fd2a-4237-bd88-98baa2235779"],
+Cell[16305, 437, 2333, 60, 142, "Output",ExpressionUUID->"2bb1027d-dae1-4015-b50c-161c1a6ca711"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18675, 502, 1422, 31, 141, "Input",ExpressionUUID->"653bf6c1-0a23-460b-a7a9-52136259a2ba"],
+Cell[20100, 535, 1843, 48, 131, "Output",ExpressionUUID->"94548e74-792c-4080-8e5f-0febb6cb2b4b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21980, 588, 1344, 30, 141, "Input",ExpressionUUID->"7f6709b8-9cfb-4ec0-88f0-b6c143a9699d"],
+Cell[23327, 620, 1547, 44, 134, "Output",ExpressionUUID->"9f201e58-80de-4ee6-89f6-36ddac22a0b1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24911, 669, 359, 6, 31, "Input",ExpressionUUID->"9335f83e-d81b-4d23-b0d5-6004a6d773ca"],
+Cell[25273, 677, 1275, 26, 33, "Output",ExpressionUUID->"ff93a941-227e-4824-a4c4-6b9ed487f7c8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26585, 708, 308, 5, 31, "Input",ExpressionUUID->"5534be67-24f1-423e-bf40-cd691d5d6d8c"],
+Cell[26896, 715, 769, 14, 33, "Output",ExpressionUUID->"d1fba3f1-ab60-4a9d-b99a-c32e73ee8fb5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27702, 734, 420, 8, 52, "Input",ExpressionUUID->"54b8738c-fc3f-43e4-a874-661ff1a0dc9f"],
+Cell[28125, 744, 1951, 55, 142, "Output",ExpressionUUID->"a0c02f46-5b11-451d-8e5e-f01ee3253d4b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30113, 804, 430, 8, 54, "Input",ExpressionUUID->"7f994bf0-dfdc-4793-b42d-53168c5a5efe"],
+Cell[30546, 814, 1578, 45, 131, "Output",ExpressionUUID->"b22aee76-e53c-43f1-839e-a5bfdc9f3114"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32161, 864, 425, 8, 52, "Input",ExpressionUUID->"7f7422d7-f3c9-4514-a498-e4eef49d22e3"],
+Cell[32589, 874, 1418, 41, 132, "Output",ExpressionUUID->"33557068-cd6a-4a28-a9bf-123c1fbd5609"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34044, 920, 459, 11, 29, "Input",ExpressionUUID->"2163f5e4-e026-44fe-a0b7-89a000c2ebf9"],
+Cell[34506, 933, 1823, 51, 108, "Output",ExpressionUUID->"2a129293-74b1-422e-97a7-ef0d73c099da"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36366, 989, 289, 5, 31, "Input",ExpressionUUID->"09c3ca82-e9ae-4d77-b032-7b18b5d0da76"],
+Cell[36658, 996, 912, 21, 33, "Output",ExpressionUUID->"7331c326-b294-4226-91cd-5b629f434c6a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37607, 1022, 865, 17, 110, "Input",ExpressionUUID->"7c3e3d88-43ab-4ddf-b7af-f16eb86b0d1d"],
+Cell[38475, 1041, 4757, 105, 64, "Output",ExpressionUUID->"19a0147e-79ef-4cff-9184-6dc67db98d1d"],
+Cell[43235, 1148, 4017, 85, 59, "Output",ExpressionUUID->"b7357f0d-a561-4c95-aaca-07d0fd8020fb"],
+Cell[47255, 1235, 3462, 79, 59, "Output",ExpressionUUID->"ee00c27d-efd6-415b-9b13-940ab4212776"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50754, 1319, 4775, 107, 61, "Input",ExpressionUUID->"6750ffa4-8b5a-4697-bf7b-91dfabc8801a"],
+Cell[55532, 1428, 4873, 107, 64, "Output",ExpressionUUID->"4c250842-c4b7-4a01-b783-efd026d07809"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60442, 1540, 706, 15, 92, "Input",ExpressionUUID->"ed0e8e4d-a2ad-4b60-b3b0-f39fca78b73e"],
+Cell[61151, 1557, 4758, 104, 64, "Output",ExpressionUUID->"9059980f-4250-4f46-b5dd-867e91e48903"],
+Cell[65912, 1663, 3969, 85, 59, "Output",ExpressionUUID->"0a0611ea-eff7-4bf8-805f-576efcef3582"],
+Cell[69884, 1750, 3479, 79, 59, "Output",ExpressionUUID->"aeca24f0-d7af-4efa-807a-d9ecfb2d834b"],
+Cell[73366, 1831, 697, 18, 33, "Output",ExpressionUUID->"8d254904-cee6-4081-aa1b-b21356cd7574"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74100, 1854, 423, 9, 29, "Input",ExpressionUUID->"d369f740-0ea3-4602-982a-faa37d754a5d"],
+Cell[74526, 1865, 422, 10, 35, "Output",ExpressionUUID->"b64c2eed-2107-433e-ab1b-5cc6007e1732"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74985, 1880, 373, 8, 29, "Input",ExpressionUUID->"02276769-dffe-4462-81a1-25fdbb663dcf"],
+Cell[75361, 1890, 296, 5, 33, "Output",ExpressionUUID->"a77ff229-cbb2-474c-8b34-9a2623ef3ba4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[75694, 1900, 163, 3, 29, "Input",ExpressionUUID->"b42663b8-b484-46a7-a077-5f8c028a7ce4"],
+Cell[75860, 1905, 151, 2, 33, "Output",ExpressionUUID->"51dd64e0-ab63-4657-abc4-92e5c68c44a7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76048, 1912, 543, 12, 29, "Input",ExpressionUUID->"cd72f2e6-d0d5-4885-8047-ce1780059e86"],
+Cell[76594, 1926, 448, 11, 50, "Output",ExpressionUUID->"fc19bf36-8a22-4d19-a810-5aae9ccdbe4f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[77079, 1942, 690, 17, 31, "Input",ExpressionUUID->"8b3abbb3-fc4f-4929-9a34-e41c920dcbbc"],
+Cell[77772, 1961, 761, 20, 35, "Output",ExpressionUUID->"6057fcb8-edd2-4be8-b2bd-0de0ac539d06"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78570, 1986, 269, 5, 51, "Input",ExpressionUUID->"b7b4534d-172a-4f6e-bf22-b443bc9267a6"],
+Cell[78842, 1993, 185, 2, 33, "Output",ExpressionUUID->"6ca552f3-0de1-47de-8d89-357e30ac81ab"],
+Cell[79030, 1997, 208, 4, 33, "Output",ExpressionUUID->"186763c2-6cdf-42bf-8a4b-f1ba359dc985"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
