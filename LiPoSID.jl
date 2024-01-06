@@ -883,11 +883,15 @@ function sos_min_newton(p::Polynomial)
     #
     ################################################################################################
 
+    # devide by the largest coef
+
+    pd = maximum(abs.(coefficients(p)))
+
     # find variable scaling
-    scale = LiPoSID.scaling_poly(p)
+    scale = LiPoSID.scaling_poly(pd)
 
     # scale the polynomial
-    p_scaled = subs(p, variables(p) => scale .* variables(p))
+    p_scaled = subs(pd, variables(pd) => scale .* variables(pd))
 
     # minimize
     # minimizer_scaled_tssos = nothing
