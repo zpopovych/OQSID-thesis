@@ -1,7 +1,7 @@
 module LiPoSID
 
 using LinearAlgebra
-using QuantumOptics
+#using QuantumOptics
 using DynamicPolynomials
 # using MomentTools
 using MosekTools
