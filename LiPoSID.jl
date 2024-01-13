@@ -4,15 +4,15 @@ using LinearAlgebra
 #using QuantumOptics
 using DynamicPolynomials
 # using MomentTools
-using MosekTools
+#using MosekTools
 using Random
 using JuMP
 using NLopt
-using TSSOS
-using Clustering
+#using TSSOS
+#using Clustering
 using HDF5
 
-using HomotopyContinuation
+#using HomotopyContinuation
 
 function hankel(y::AbstractArray)
     m, time_duration = size(y) # m - dimention of output vector y, time_duration - length of timeseries (number of time steps)
