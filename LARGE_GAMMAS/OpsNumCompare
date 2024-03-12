@@ -347,3 +347,36 @@ State_B6
 0.995694667763628
 
 POP_LARGE_GAMMAS_LME_GEN_5_random_trn4_tst2_2024-Mar-07_at_17-01.h5
+
+
+
+
+γ =  25.133
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.9247556732046174
+Fidelity of SID: 0.9019564700711017
+γ =  79.477
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.9935317446181999
+Fidelity of SID: 0.9708969732951015
+γ =  251.33
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.994879984164585
+Fidelity of SID: 0.9972641076464938
+POP_LARGE_GAMMAS_LME_GEN_1_random_trn4_tst2_2024-Mar-11_at_20-49.h5
+
+
+
+γ =  25.133
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.9247556732046174
+Fidelity of SID: 0.9168526665546284
+γ =  79.477
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.9935317446181999
+Fidelity of SID: 0.9749315975561257
+γ =  251.33
+State_B1 State_B2 State_B3 State_B4 State_D1 State_D2 State_D3 State_D4 State_D5 State_D6 State_D7 State_D8 State_D9 State_D10 State_D11 State_D12 State_D13 State_D14 State_D15 State_D16 State_D17 State_D18 State_D19 State_D20 
+Fidelity of linearity: 0.994879984164585
+Fidelity of SID: 0.9969504386642423
+POP_LARGE_GAMMAS_LME_GEN_1_random_trn4_tst2_2024-Mar-11_at_20-57.h5
