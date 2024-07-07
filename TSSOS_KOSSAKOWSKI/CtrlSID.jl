@@ -115,7 +115,6 @@ end
 #  Simulation of the drived evolution of two level sysstem  #
 #  using Kossakowski parameters                             #
 #############################################################
-
 function kossak_cntrl_time_evolution(ρₒ, tₘₐₓ, dt, H0, V, C, Fᴼᴺᴮ, ω)
 
     D(ρ) = sum(C .* [2*fᵢ*ρ*fⱼ' - ρ*fⱼ'*fᵢ - fⱼ'*fᵢ*ρ  for fᵢ in Fᴼᴺᴮ, fⱼ in Fᴼᴺᴮ])/2
@@ -158,6 +157,57 @@ function suppress_output(f, args...; kwargs...)
         end
     end
 end
+
+function jump(obj::Polynomial)
+    try
+        # Extract variables from the objective and constraints
+        all_vars = variables(obj)
+        n = length(all_vars)
+        
+        # Create the optimization model
+        model = Model(Ipopt.Optimizer)
+        
+        # Define the JuMP variables
+        @variable(model, x[1:n])
+        
+        # Create a function to evaluate the polynomial
+        function evaluate_poly(poly, var_map)
+            expr = zero(x[1]) # Initialize to zero with the type of x[1]
+            for (term, coeff) in zip(terms(poly), coefficients(poly))
+                term_expr = coeff
+                for (v, exp) in zip(variables(term), exponents(term))
+                    term_expr *= var_map[v]^exp
+                end
+                expr += term_expr
+            end
+            return expr
+        end
+        
+        # Map the polynomial variables to JuMP variables
+        var_map = Dict(v => x[i] for (i, v) in enumerate(all_vars))
+        
+        # Define the objective function
+        obj_expr = evaluate_poly(obj, var_map)
+        @NLobjective(model, Min, obj_expr)
+                
+        # Solve the optimization problem
+        suppress_output(optimize!, model)
+        
+        # Get the results
+        minimizer = value.(x)
+
+        optimal_solution = all_vars => minimizer
+
+        optimal_value = objective_value(model)
+        status = termination_status(model)
+        
+        return optimal_solution, optimal_value, status
+    catch e
+        println("An error occurred: ", e)
+        return nothing, nothing, :Error
+    end
+end
+
 
 # Define the function jump_constrained
 function jump_constrained(obj::Polynomial, constr::Vector{<:Polynomial})
@@ -250,6 +300,58 @@ function cs_tssos(obj::Polynomial, constr::Vector{<:Polynomial})
                 while sol !== nothing
                     previous_opt, previous_sol, previous_data = opt, sol, data 
                     opt, sol, data = TSSOS.cs_tssos_higher!(data; QUIET=true, solution=true)
+                end
+
+                # Refine the solution
+                ref_sol, flag = TSSOS.refine_sol(previous_opt, previous_sol, previous_data, QUIET=true, tol=1e-10)
+
+                # Form the solution dictionary
+                #solution = Dict(variables(obj) .=> ref_sol)
+                solution = variables(obj) => ref_sol
+
+                optimal_value = previous_opt
+                status = flag == 0 ? :Global : :Local
+            end
+        end
+    catch e
+        println("TSSOS failed: ", e)
+    end
+
+    return solution, optimal_value, status
+end
+
+function tssos(obj::Polynomial)
+    ################################################################################################
+    #
+    #    TSSOS on polynomial without variable scaling
+    #
+    ################################################################################################
+
+    # Collect all unique variables from the objective and constraints
+    all_vars = variables(obj)
+
+    # Initialize solution variables
+    # solution = Dict(variables(obj) .=> nothing)
+    solution = variables(obj) => nothing
+    optimal_value = nothing
+    status = :Error
+
+    #relax_order = maxdegree(obj) > 2 ? maxdegree(obj) ÷ 2 : 2
+    relax_order = maxdegree(obj) > 2 ? maxdegree(obj) : 2
+
+    try 
+        # Redirect stdout and stderr to suppress TSSOS output
+        redirect_stdout(open("/dev/null", "w")) do
+            redirect_stderr(open("/dev/null", "w")) do
+                # Solve using cs_tssos_first
+                opt, sol, data = TSSOS.tssos_first(obj, all_vars, solution=true, QUIET=true)
+
+                previous_opt, previous_sol, previous_data = opt, sol, data 
+
+                # Iteratively solve using tssos_higher! until no further solution is found
+                while sol !== nothing
+                    previous_opt, previous_sol, previous_data = opt, sol, data 
+                    opt, sol, data = TSSOS.tssos_higher!(data; QUIET=true, solution=true)
                 end
 
                 # Refine the solution
