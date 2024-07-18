@@ -160,7 +160,7 @@ function suppress_output(f, args...; kwargs...)
 end
 
 # Define the function jump_constrained
-function jump_constrained(obj::Polynomial, constr::Vector{<:Polynomial})
+function cs_jump(obj::Polynomial, constr::Vector{<:Polynomial})
     try
         # Extract variables from the objective and constraints
         obj_vars = variables(obj)
