@@ -1478,4 +1478,30 @@ function DMD_step(A, ρ₀)
     dm_b4(A * bloch4(ρ₀))
 end
 
+function get_lindblad_operators(C::Matrix{ComplexF64}, basis_ops::Vector{Matrix{ComplexF64}})
+    # Check that C is a square matrix and basis_ops has the same dimension
+    n = size(C, 1)
+    if size(C, 2) != n || length(basis_ops) != n
+        throw(ArgumentError("Dimensions of C and basis_ops do not match"))
+    end
+
+    # Perform eigenvalue decomposition of C
+    eigvals, eigvecs = eigen(C)
+
+    # Construct the Lindblad operators
+    lindblad_ops = []
+    for i in 1:n
+        if eigvals[i] > 1e-10  # Filter out negligible eigenvalues to ensure numerical stability
+            lindblad_op = zeros(ComplexF64, size(basis_ops[1]))
+            for j in 1:n
+                lindblad_op .+= sqrt(eigvals[i]) * eigvecs[j, i] * basis_ops[j]
+            end
+            push!(lindblad_ops, lindblad_op)
+        end
+    end
+
+    return lindblad_ops
+end
+
+
 end
