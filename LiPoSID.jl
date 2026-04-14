@@ -408,6 +408,20 @@ function simpson_obj_g(ρ::Array{ComplexF64,3}, t, H, J, g)
     return obj
 end
 
+function non_mark_obj(ρ::Vector{Matrix{ComplexF64}}, t, H, J, H_mem, J_mem, k::Int)
+    obj = 0
+    for i in (k+3):length(ρ)
+        ρ_avg = (ρ[i-2]   + 4ρ[i-1]   + ρ[i])   / 3
+        ρ_mem = (ρ[i-k-2] + 4ρ[i-k-1] + ρ[i-k]) / 3
+        residual = ρ[i] - ρ[i-2] -
+                   (t[i]-t[i-1]) * lindblad_rhs(ρ_avg, H, J) -
+                   (t[i]-t[i-1]) * lindblad_rhs(ρ_mem, H_mem, J_mem)
+        obj += frobenius_norm2(residual)
+    end
+    obj = sum(real(coef) * mon for (coef, mon) in zip(coefficients(obj), monomials(obj)))
+    return obj
+end
+
 function boole_obj(ρ::Vector{Matrix{ComplexF64}}, t, H, A)
     
     obj = 0
